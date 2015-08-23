@@ -1,0 +1,17 @@
+default:
+    autoload:
+        - %paths.base%/Features/bootstrap/
+
+    suites:
+        default:
+            contexts:
+                - Fidry\AliceFixturesExtension\Context\AliceContext
+
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                env:       test
+                debug:     true
+                path:      test/SymfonyApp/AppKernel.php
+                bootstrap: test/SymfonyApp/autoload.php
+        Fidry\AliceFixturesExtension\Extension: ~

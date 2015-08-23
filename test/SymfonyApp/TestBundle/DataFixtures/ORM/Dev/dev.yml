@@ -1,0 +1,2 @@
+Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Entity\Dev:
+    dev{1..10}: {}

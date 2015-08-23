@@ -1,0 +1,2 @@
+Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Entity\Prod:
+    prod{1..10}: {}

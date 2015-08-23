@@ -14,7 +14,9 @@ namespace Fidry\AliceFixturesExtension\Context;
 use Behat\Behat\Context\Context;
 use Doctrine\Common\Persistence\ObjectManager;
 use Hautelook\AliceBundle\Alice\DataFixtures\LoaderInterface;
+use Hautelook\AliceBundle\Doctrine\Finder\Finder;
 use Nelmio\Alice\PersisterInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Context to load fixtures files with Alice loader.
@@ -24,15 +26,27 @@ use Nelmio\Alice\PersisterInterface;
 class AliceContext implements Context
 {
     /**
+     * @var Finder
+     */
+    private $finder;
+
+    /**
+     * @var KernelInterface
+     */
+    private $kernel;
+
+    /**
      * @var LoaderInterface
      */
     protected $loader;
 
     /**
+     * @param KernelInterface                  $kernel
+     * @param Finder                           $finder
+     * @param LoaderInterface                  $loader
      * @param PersisterInterface|ObjectManager $persister
-     * @param LoaderInterface    $loader
      */
-    function __construct($persister, LoaderInterface $loader)
+    function __construct(KernelInterface $kernel, Finder $finder, LoaderInterface $loader, $persister)
     {
         switch (true) {
             case $persister instanceof PersisterInterface:
@@ -44,18 +58,23 @@ class AliceContext implements Context
                 throw new \InvalidArgumentException('Invalid persister type.');
         }
 
+        $this->kernel = $kernel;
+        $this->finder = $finder;
         $this->loader = $loader;
     }
 
     /**
      * @Given /^the fixtures "([^"]*)" are loaded$/
      *
-     * @param string $fixtures Path to the fixtures
+     * @param string $fixturesFile Path to the fixtures
      *
      * @return array
      */
-    public function thereAreFixtures($fixtures)
+    public function thereAreFixtures($fixturesFile)
     {
-        return $this->loader->load($this->persister, $fixtures);
+        return $this->loader->load(
+            $this->persister,
+            $this->finder->resolveFixtures($this->kernel, $fixturesFile)
+        );
     }
 }
