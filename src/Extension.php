@@ -30,7 +30,6 @@ class Extension implements ExtensionInterface
      */
     public function process(ContainerBuilder $container)
     {
-        // TODO: Implement process() method.
     }
 
     /**
@@ -40,7 +39,7 @@ class Extension implements ExtensionInterface
      */
     public function getConfigKey()
     {
-        return 'alice';
+        return 'alice_fixtures';
     }
 
     /**
@@ -64,7 +63,6 @@ class Extension implements ExtensionInterface
      */
     public function configure(ArrayNodeDefinition $builder)
     {
-        // TODO: Implement configure() method.
     }
 
     /**
@@ -75,6 +73,5 @@ class Extension implements ExtensionInterface
      */
     public function load(ContainerBuilder $container, array $config)
     {
-        // TODO: Implement load() method.
     }
 }

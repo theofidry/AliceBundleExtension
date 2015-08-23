@@ -60,7 +60,7 @@ Given the fixtures "user.yml" are loaded
 
 ## Credits
 
-This bundle is developed by [Théo FIDRY](https://github.com/theofidry).
+This library is developed by [Théo FIDRY](https://github.com/theofidry).
 
 
 ## License
