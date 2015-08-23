@@ -26,6 +26,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class AliceContext implements Context
 {
     /**
+     * @var string
+     */
+    private $basePath;
+
+    /**
      * @var Finder
      */
     private $finder;
@@ -45,9 +50,15 @@ class AliceContext implements Context
      * @param Finder                           $finder
      * @param LoaderInterface                  $loader
      * @param PersisterInterface|ObjectManager $persister
+     * @param string                           $basePath
      */
-    function __construct(KernelInterface $kernel, Finder $finder, LoaderInterface $loader, $persister)
-    {
+    function __construct(
+        KernelInterface $kernel,
+        Finder $finder,
+        LoaderInterface $loader,
+        $persister,
+        $basePath = null
+    ) {
         switch (true) {
             case $persister instanceof PersisterInterface:
             case $persister instanceof ObjectManager:
@@ -58,6 +69,7 @@ class AliceContext implements Context
                 throw new \InvalidArgumentException('Invalid persister type.');
         }
 
+        $this->basePath = $basePath;
         $this->kernel = $kernel;
         $this->finder = $finder;
         $this->loader = $loader;
@@ -72,9 +84,13 @@ class AliceContext implements Context
      */
     public function thereAreFixtures($fixturesFile)
     {
+        if (0 !== strpos($fixturesFile, '/')) {
+            $fixturesFile = sprintf('%s/%s', $this->basePath, $fixturesFile);
+        }
+
         return $this->loader->load(
             $this->persister,
-            $this->finder->resolveFixtures($this->kernel, $fixturesFile)
+            $this->finder->resolveFixtures($this->kernel, [$fixturesFile])
         );
     }
 }
