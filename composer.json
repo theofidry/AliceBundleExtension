@@ -1,0 +1,35 @@
+{
+    "name": "theofidry/alice-fixtures-extension",
+    "description": "Extension to load fixtures files with Hautelook/AliceBundle.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Théo FIDRY",
+            "email": "theo.fidry@gmail.com",
+            "homepage": "https://github.com/theofidry"
+        }
+    ],
+    "require": {
+        "hautelook/alice-bundle": "~1.0@beta",
+        "behat/behat": "~3.0"
+    },
+    "require-dev": {
+        "doctrine/orm": "~2.4",
+        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/doctrine-fixtures-bundle": "~2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fidry\\AliceFixturesExtension\\": "src"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Fidry\\AliceFixturesExtension\\Tests\\": "test"
+      }
+    },
+    "require-dev": {
+        "behat/symfony2-extension": "^2.0"
+    }
+}
