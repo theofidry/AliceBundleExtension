@@ -27,11 +27,11 @@ default:
         default:
             contexts:
                 - Fidry\AliceFixturesExtension\Context\AliceContext:
-                      kernel:         @kernel
-                      finder:         @hautelook_alice.finder
-                      loader:         @hautelook_alice.fixtures.loader
-                      persister:      @doctrine.orm.entity_manager
-                      basePath:       %paths.base%/features/fixtures
+                      kernel: @kernel
+                      finder: @hautelook_alice.finder
+                      loader: @hautelook_alice.fixtures.loader
+                      persister: @doctrine.orm.entity_manager
+                      basePath: %paths.base%/features/fixtures
     # ...
     extensions:
         Fidry\AliceFixturesExtension\Extension: ~
