@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Hautelook\AliceBundle package.
+ * This file is part of the Fidry\AliceFixturesExtension package.
  *
- * (c) Baldur Rensch <brensch@gmail.com>
+ * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class Inte
+class Dummy
 {
     /**
      * @var int
@@ -25,13 +25,12 @@ class Inte
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    public $id;
 
     /**
-     * @return int|null
+     * @var string
+     *
+     * @ORM\Column()
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    public $name;
 }

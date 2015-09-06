@@ -1,6 +1,6 @@
 {
     "name": "theofidry/alice-fixtures-extension",
-    "description": "Extension to load fixtures files with Hautelook/AliceBundle.",
+    "description": "Extension to load fixtures files with HautelookAliceBundle.",
     "keywords": ["Symfony", "Fixture", "ORM", "Alice", "Faker", "Behat", "Context", "Extension"],
     "type": "library",
     "license": "MIT",
@@ -14,20 +14,19 @@
     "require": {
         "php": ">=5.4.0",
         "behat/behat": "~3.0",
-        "hautelook/alice-bundle": "dev-master"
+        "behat/symfony2-extension": "^2.0",
+        "hautelook/alice-bundle": "~1.0@beta"
     },
     "require-dev": {
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "fabpot/php-cs-fixer": "^1.9",
-        "phpunit/phpunit": "^4.7",
+        "fabpot/php-cs-fixer": "~2.0@dev",
         "symfony/console": "~2.1",
+        "symfony/expression-language": "^2.7",
         "symfony/framework-bundle": "~2.1",
         "symfony/yaml": "~2.1",
-        "symfony/validator": "~2.1",
-        "theofidry/psysh-bundle": "~1.1",
-        "symfony/expression-language": "^2.7"
+        "theofidry/psysh-bundle": "~1.1"
     },
     "autoload": {
         "psr-4": {
@@ -35,11 +34,8 @@
         }
     },
     "autoload-dev": {
-      "psr-4": {
-        "Fidry\\AliceFixturesExtension\\Tests\\": "test"
-      }
-    },
-    "require-dev": {
-        "behat/symfony2-extension": "^2.0"
+        "psr-4": {
+            "Fidry\\AliceFixturesExtension\\Tests\\": "test"
+        }
     }
 }

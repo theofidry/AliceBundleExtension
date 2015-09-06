@@ -1,3 +1,0 @@
-Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Entity\Brand:
-    brand{1..10}:
-        name: Brand <foo('lol')> <name()>

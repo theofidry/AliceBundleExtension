@@ -1,8 +1,0 @@
-services:
-    alice.processor.entity_managers:
-        class: Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\DataFixtures\Processor\BrandProcessor
-        tags: [ { name: hautelook_alice.alice.processor } ]
-
-    faker.provider.foo:
-        class: Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\DataFixtures\Faker\Provider\FooProvider
-        tags: [ { name: hautelook_alice.faker.provider } ]

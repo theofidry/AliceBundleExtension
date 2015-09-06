@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
+namespace Fidry\AliceFixturesExtension\Tests\SymfonyApp;
+
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
-use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Bundle\ABundle\TestABundle;
-use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Bundle\BBundle\TestBBundle;
-use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Bundle\CBundle\TestCBundle;
 use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\TestBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -28,9 +28,7 @@ class AppKernel extends Kernel
             new FrameworkBundle(),
             new HautelookAliceBundle(),
             new TestBundle(),
-            new TestABundle(),
-            new TestBBundle(),
-            new TestCBundle(),
+            new PsyshBundle(),
         ];
     }
 
