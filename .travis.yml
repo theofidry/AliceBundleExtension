@@ -19,8 +19,8 @@ matrix:
     fast_finish: true
 
 install:
-    - composer install
     - composer self-update
+    - composer install
     - rm -rf Features/SymfonyApp/cache/*
     - bash -c 'if ([ "hhvm" != "$TRAVIS_PHP_VERSION" ] && [ "hhvm-nightly" != "$TRAVIS_PHP_VERSION" ] && [ "nightly" != "$TRAVIS_PHP_VERSION" ]); then wget https://scrutinizer-ci.com/ocular.phar; fi;'
 
