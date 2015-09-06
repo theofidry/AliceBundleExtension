@@ -12,9 +12,9 @@
 namespace Fidry\AliceFixturesExtension\Tests\SymfonyApp;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\TestBundle;
 use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
-use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\TestBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;

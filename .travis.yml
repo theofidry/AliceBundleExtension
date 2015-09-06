@@ -12,12 +12,10 @@ php:
     - 5.6
     - nightly
     - hhvm
-    - hhvm-nightly
 
 matrix:
     allow_failures:
         - php: nightly
-        - php: hhvm-nightly
     fast_finish: true
 
 install:
@@ -25,6 +23,10 @@ install:
     - composer self-update
     - rm -rf Features/SymfonyApp/cache/*
     - bash -c 'if ([ "hhvm" != "$TRAVIS_PHP_VERSION" ] && [ "hhvm-nightly" != "$TRAVIS_PHP_VERSION" ] && [ "nightly" != "$TRAVIS_PHP_VERSION" ]); then wget https://scrutinizer-ci.com/ocular.phar; fi;'
+
+before_script:
+    - bash -c 'php console doctrine:database:create --env=test'
+    - bash -c 'php console doctrine:schema:create --env=test'
 
 script:
     - vendor/bin/behat

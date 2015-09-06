@@ -54,7 +54,7 @@ class AliceContext implements Context
      * @param PersisterInterface|ObjectManager $persister
      * @param string                           $basePath
      */
-    function __construct(
+    public function __construct(
         KernelInterface $kernel,
         FixturesFinderInterface $fixturesFinder,
         LoaderInterface $loader,
