@@ -21,8 +21,7 @@ matrix:
 install:
     - composer self-update
     - composer install
-    - rm -rf Features/SymfonyApp/cache/*
-    - bash -c 'if ([ "hhvm" != "$TRAVIS_PHP_VERSION" ] && [ "hhvm-nightly" != "$TRAVIS_PHP_VERSION" ] && [ "nightly" != "$TRAVIS_PHP_VERSION" ]); then wget https://scrutinizer-ci.com/ocular.phar; fi;'
+    - rm -rf test/Features/SymfonyApp/cache/*
 
 before_script:
     - bash -c 'php console doctrine:database:create --env=test'
@@ -30,6 +29,3 @@ before_script:
 
 script:
     - vendor/bin/behat
-
-after_script:
-  - bash -c 'if ([ "hhvm" != "$TRAVIS_PHP_VERSION" ] && [ "hhvm-nightly" != "$TRAVIS_PHP_VERSION" ] && [ "nightly" != "$TRAVIS_PHP_VERSION" ]); then php ocular.phar code-coverage:upload --format=php-clover coverage.xml; fi;'
