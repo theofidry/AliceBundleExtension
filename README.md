@@ -27,11 +27,11 @@ default:
         default:
             contexts:
                 - Fidry\AliceFixturesExtension\Context\AliceContext:
-                      kernel: @kernel
-                      finder: @hautelook_alice.finder
-                      loader: @hautelook_alice.fixtures.loader
-                      persister: @doctrine.orm.entity_manager
-                      basePath: %paths.base%/features/fixtures
+                    kernel: @kernel
+                    fixturesFinder: @hautelook_alice.doctrine.orm.fixtures_finder
+                    loader: @hautelook_alice.fixtures.loader
+                    persister: @doctrine.orm.entity_manager
+                    basePath: %paths.base%/test/Features/fixtures
     # ...
     extensions:
         Fidry\AliceFixturesExtension\Extension: ~
@@ -55,6 +55,7 @@ Then simply load your fixtures with the following step:
 
 ```gherkin
 Given the fixtures "user.yml" are loaded
+Given the fixtures "user.yml" are loaded with the persister "doctrine.orm.entity_manager"
 ```
 
 
