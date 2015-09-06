@@ -45,7 +45,12 @@ class AliceContext implements Context
     /**
      * @var LoaderInterface
      */
-    protected $loader;
+    private $loader;
+
+    /**
+     * @var PersisterInterface
+     */
+    private $persister;
 
     /**
      * @param KernelInterface                  $kernel
@@ -112,27 +117,23 @@ class AliceContext implements Context
     }
 
     /**
-     * @param $persister
+     * @param Doctrine|PersisterInterface|null $persister
      *
-     * @return Doctrine|PersisterInterface|null
+     * @return PersisterInterface
      *
      * @throws \InvalidArgumentException
      */
     private function resolvePersister($persister)
     {
-        $_persister = null;
-
         if (null === $persister) {
             return $this->persister;
         }
 
         switch (true) {
             case $persister instanceof PersisterInterface:
-                $_persister = $persister;
-                break;
+                return $persister;
             case $persister instanceof ObjectManager:
-                $_persister = new Doctrine($persister);
-                break;
+                return new Doctrine($persister);
 
             default:
                 throw new \InvalidArgumentException(sprintf(
@@ -140,7 +141,5 @@ class AliceContext implements Context
                     get_class($persister)
                 ));
         }
-
-        return $_persister;
     }
 }
