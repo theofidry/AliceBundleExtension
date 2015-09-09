@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Entity;
+namespace Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class Dummy
+class AnotherDummy
 {
     /**
      * @var int

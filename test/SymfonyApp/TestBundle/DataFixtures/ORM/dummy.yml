@@ -1,3 +1,0 @@
-Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\Entity\Dummy:
-    dummy_{1..10}:
-        name: from "test/SymfonyApp/TestBundle/DataFixtures/ORM/dummy.yml"

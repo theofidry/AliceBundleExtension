@@ -1,21 +1,20 @@
 default:
+    autoload:
+        '': %paths.base%/tests/Features/bootstrap
     suites:
         default:
-            paths: [ %paths.base%/test/Features ]
+            paths: [ %paths.base%/tests/Features ]
             contexts:
-                - Fidry\AliceFixturesExtension\Context\AliceContext:
-                      kernel: @kernel
-                      fixturesFinder: @hautelook_alice.doctrine.orm.fixtures_finder
-                      loader: @hautelook_alice.fixtures.loader
-                      persister: @doctrine.orm.entity_manager
-                      basePath: %paths.base%/test/Features/fixtures
+                - FeatureContext
+                - Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext:
+                    basePath: %paths.base%/tests/Features/fixtures/ORM
 
     extensions:
         Behat\Symfony2Extension:
             kernel:
                 env: test
                 debug: true
-                path: test/SymfonyApp/AppKernel.php
-                class: Fidry\AliceFixturesExtension\Tests\SymfonyApp\AppKernel
-                bootstrap: test/SymfonyApp/autoload.php
-        Fidry\AliceFixturesExtension\Extension: ~
+                path: tests/Functional/AppKernel.php
+                bootstrap: tests/Functional/autoload.php
+        Fidry\AliceFixturesExtension\Extension:
+            fixtures_base_path: %paths.base%/tests/Features/fixtures

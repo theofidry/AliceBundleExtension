@@ -16,6 +16,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
  * @var ClassLoader
  */
 $loader = require __DIR__.'/../../vendor/autoload.php';
+require 'AppKernel.php';
 
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 

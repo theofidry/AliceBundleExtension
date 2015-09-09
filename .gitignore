@@ -1,4 +1,6 @@
 vendor
 composer.lock
-test/SymfonyApp/cache
-test/SymfonyApp/logs
+tests/Functional/cache
+tests/Functional/logs
+coverage.xml
+.php_cs.cache

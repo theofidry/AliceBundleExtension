@@ -9,10 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Tests\SymfonyApp;
-
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use Fidry\AliceFixturesExtension\Tests\SymfonyApp\TestBundle\TestBundle;
+use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\TestBundle;
 use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;

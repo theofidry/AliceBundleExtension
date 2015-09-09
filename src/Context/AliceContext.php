@@ -11,135 +11,33 @@
 
 namespace Fidry\AliceFixturesExtension\Context;
 
-use Behat\Behat\Context\Context;
-use Doctrine\Common\Persistence\ObjectManager;
-use Hautelook\AliceBundle\Alice\DataFixtures\LoaderInterface;
-use Hautelook\AliceBundle\Finder\FixturesFinderInterface;
-use Nelmio\Alice\Persister\Doctrine;
 use Nelmio\Alice\PersisterInterface;
-use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Context to load fixtures files with Alice loader.
- *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AliceContext implements Context
+interface AliceContext
 {
     /**
-     * @var string
-     */
-    private $basePath;
-
-    /**
-     * @var FixturesFinderInterface
-     */
-    private $fixturesFinder;
-
-    /**
-     * @var KernelInterface
-     */
-    private $kernel;
-
-    /**
-     * @var LoaderInterface
-     */
-    private $loader;
-
-    /**
-     * @var PersisterInterface
-     */
-    private $persister;
-
-    /**
-     * @param KernelInterface                  $kernel
-     * @param FixturesFinderInterface          $fixturesFinder
-     * @param LoaderInterface                  $loader
-     * @param PersisterInterface|ObjectManager $persister
-     * @param string                           $basePath
-     */
-    public function __construct(
-        KernelInterface $kernel,
-        FixturesFinderInterface $fixturesFinder,
-        LoaderInterface $loader,
-        $persister,
-        $basePath = null
-    ) {
-        $this->kernel = $kernel;
-        $this->fixturesFinder = $fixturesFinder;
-        $this->loader = $loader;
-        $this->persister = $this->resolvePersister($persister);
-        $this->basePath = $basePath;
-    }
-
-    /**
-     * @Transform /^(\d+)$/
-     *
-     * @throws ServiceNotFoundException
-     */
-    public function castServiceIdToService($serviceId)
-    {
-        return $this->kernel->getContainer()->get($serviceId);
-    }
-
-    /**
-     * @Transform /^(\d+)$/
-     *
-     * @throws ServiceNotFoundException
-     */
-    public function castPersistence($serviceId)
-    {
-        $service = $this->castServiceIdToService($serviceId);
-
-        return $this->resolvePersister($service);
-    }
-
-    /**
      * @Given the fixtures :fixturesFile are loaded
+     * @Given the fixtures file :fixturesFile is loaded
      * @Given the fixtures :fixturesFile are loaded with the persister :persister
+     * @Given the fixtures file :fixturesFile is loaded with the persister :persister
      *
-     * @param string $fixturesFile Path to the fixtures
-     * @param string $persister
-     *
-     * @return array
+     * @param string             $fixturesFile Path to the fixtures
+     * @param PersisterInterface $persister
      */
-    public function thereAreFixtures($fixturesFile, $persister = null)
-    {
-        if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
-            $fixturesFile = sprintf('%s/%s', $this->basePath, $fixturesFile);
-        }
-
-        return $this->loader->load(
-            $this->resolvePersister($persister),
-            $this->fixturesFinder->resolveFixtures($this->kernel, [$fixturesFile])
-        );
-    }
+    public function thereAreFixtures($fixturesFile, $persister = null);
 
     /**
-     * @param Doctrine|PersisterInterface|null $persister
+     * @param string $basePath
      *
-     * @return PersisterInterface
-     *
-     * @throws \InvalidArgumentException
+     * @return $this
      */
-    private function resolvePersister($persister)
-    {
-        if (null === $persister) {
-            return $this->persister;
-        }
+    public function setBasePath($basePath);
 
-        switch (true) {
-            case $persister instanceof PersisterInterface:
-                return $persister;
-            case $persister instanceof ObjectManager:
-                return new Doctrine($persister);
-
-            default:
-                throw new \InvalidArgumentException(sprintf(
-                    'Invalid persister type, expected Nelmio\Alice\PersisterInterface or Doctrine\Common\Persistence\ObjectManager. Got %s instead.',
-                    get_class($persister)
-                ));
-        }
-    }
+    /**
+     * @return string
+     */
+    public function getBasePath();
 }

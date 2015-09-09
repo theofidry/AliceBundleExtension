@@ -21,7 +21,7 @@ matrix:
 install:
     - composer self-update
     - composer install
-    - rm -rf test/Features/SymfonyApp/cache/*
+    - rm -rf tests/Features/Functional/cache/*
 
 before_script:
     - bash -c 'php console doctrine:database:create --env=test'

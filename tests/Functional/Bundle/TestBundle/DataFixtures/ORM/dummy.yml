@@ -1,0 +1,3 @@
+Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy:
+    dummy_{0..9}:
+        name: Dummy <current()>

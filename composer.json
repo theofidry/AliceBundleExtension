@@ -22,6 +22,7 @@
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "fabpot/php-cs-fixer": "~2.0@dev",
+        "phpunit/phpunit": "^4.8",
         "symfony/console": "~2.1",
         "symfony/expression-language": "^2.7",
         "symfony/framework-bundle": "~2.1",
@@ -35,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Fidry\\AliceFixturesExtension\\Tests\\": "test"
+            "Fidry\\AliceFixturesExtension\\Tests\\": "tests"
         }
     }
 }
