@@ -16,12 +16,12 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
 {
     private static $defaultConfig = [
         'fixtures_base_path' => null,
-        'db_drivers' => [
+        'db_drivers'         => [
             'orm'     => null,
             'mongodb' => null,
             'phpcr'   => null,
         ],
-        'lifetime'   => null,
+        'lifetime'           => null,
     ];
 
     public function testConstructor()
@@ -33,7 +33,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
     {
         $containerBuilderProphecy = $this->prophesize('Symfony\Component\DependencyInjection\ContainerBuilder');
 
-        $containerBuilderProphecy->hasExtension("http://symfony.com/schema/dic/services")->shouldBeCalled();
+        $containerBuilderProphecy->hasExtension('http://symfony.com/schema/dic/services')->shouldBeCalled();
         $containerBuilderProphecy->getParameter('paths.base')->willReturn('basePath');
 
         $containerBuilderProphecy
@@ -85,12 +85,13 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
      */
     public function definition($class)
     {
-        return \Prophecy\Argument::that(function($args) use ($class) {
+        return \Prophecy\Argument::that(function ($args) use ($class) {
             /** @var Definition $args */
             if (false === $args instanceof Definition) {
                 return false;
             }
             $service = (new \ReflectionClass($args->getClass()))->newInstanceWithoutConstructor();
+
             return $service instanceof $class;
         });
     }
@@ -104,11 +105,12 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
      */
     private function service($filePath)
     {
-        return \Prophecy\Argument::that(function($args) use ($filePath) {
+        return \Prophecy\Argument::that(function ($args) use ($filePath) {
             /** @var FileResource $args */
             if (false === $args instanceof FileResource) {
                 return false;
             }
+
             return $filePath === $args->getResource();
         });
     }

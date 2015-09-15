@@ -47,7 +47,7 @@ class AliceContextInitializer implements ContextInitializer
             return;
         }
 
-        /** @var AliceContextInterface $context */
+        /* @var AliceContextInterface $context */
         $fixturesBasePath = $this->fixturesBasePath;
         switch (true) {
 
