@@ -91,6 +91,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
                 return false;
             }
             $service = (new \ReflectionClass($args->getClass()))->newInstanceWithoutConstructor();
+
             return $service instanceof $class;
         });
     }
@@ -109,6 +110,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
             if (false === $args instanceof FileResource) {
                 return false;
             }
+
             return $filePath === $args->getResource();
         });
     }

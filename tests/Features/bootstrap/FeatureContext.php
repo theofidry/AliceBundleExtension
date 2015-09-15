@@ -27,7 +27,7 @@ class FeatureContext implements KernelAwareContext
      * @var EntityManager
      */
     private $entityManager;
-    
+
     /**
      * Sets Kernel instance.
      *
