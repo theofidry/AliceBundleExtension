@@ -84,11 +84,32 @@ For each context, you have the following steps available:
 
 Loading a file can be done in three ways:
 
-| Type of path | fixtures file path | computed fixtures file path |
-|--------------|--------------------|-----------------------------|
-| Relative path | `"dummy.yml"` | `contextBasePath/dummy.yml`, ex: `%paths.base%/tests/Features/fixtures/ORM/dummy.yml` |
-| @Bundle path | `"@AppBundle/DataFixtures/ORM/dummy.yml"` | `src/AppBundle/DataFixtures/ORM/dummy.yml` (example)
-| Absolute path | `/dummy.yml` | unchanged |
+<table>
+    <thead style="float: left">
+        <tr>
+            <th style="display: block">Type of path</th>
+            <th style="display: block">Fixtures file path</th>
+            <th style="display: block">Computed fixtures file path</th>
+        </tr>
+    </thead>
+    <tbody style="float: right">
+        <tr>
+            <td>Relative path</td>
+            <td>`"dummy.yml"`</td>
+            <td>`contextBasePath/dummy.yml`, ex: `%paths.base%/tests/Features/fixtures/ORM/dummy.yml`</td>
+        </tr>
+        <tr>
+            <td>@Bundle path</td>
+            <td>`"@AppBundle/DataFixtures/ORM/dummy.yml"`</td>
+            <td>`src/AppBundle/DataFixtures/ORM/dummy.yml` (example)</td>
+        </tr>
+        <tr>
+            <td>Absolute path</td>
+            <td>`/dummy.yml`</td>
+            <td>unchanged</td>
+        </tr>
+    </tobdy>
+</table>
 
 
 ## Credits
