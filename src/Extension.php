@@ -72,8 +72,7 @@ class Extension implements ExtensionInterface
                         ->thenInvalid('Invalid fixtures lifetime "%s"')
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 
     /**
@@ -87,7 +86,7 @@ class Extension implements ExtensionInterface
         if (null === $config['fixtures_base_path']) {
             $config['fixtures_base_path'] = sprintf('%s/features/fixtures', $container->getParameter('paths.base'));
         }
-        
+
         foreach ($config as $key => $value) {
             $container->setParameter(sprintf('behat.%s.%s', $this->getConfigKey(), $key), $value);
         }

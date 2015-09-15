@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity;
+namespace Fidry\AliceFixturesExtension\tests\Functional\Bundle\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle;
+namespace Fidry\AliceFixturesExtension\tests\Functional\Bundle\TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

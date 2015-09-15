@@ -114,6 +114,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContext
     {
         return $this->basePath;
     }
+
 //
 //    /**
 //     * @BeforeScenario @createSchema

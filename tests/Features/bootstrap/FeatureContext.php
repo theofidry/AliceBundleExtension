@@ -13,8 +13,8 @@ use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\ORM\EntityManager;
 use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\AnotherDummy;
 use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy;
-use Symfony\Component\HttpKernel\KernelInterface;
 use PHPUnit_Framework_Assert as PHPUnit;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Class FeatureContext.
@@ -27,7 +27,7 @@ class FeatureContext implements KernelAwareContext
      * @var EntityManager
      */
     private $entityManager;
-    
+
     /**
      * Sets Kernel instance.
      *
