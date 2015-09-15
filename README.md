@@ -6,7 +6,7 @@ A [Behat extension](http://behat.org) to load [HautelookAliceBundle](https://git
 [![Package version](http://img.shields.io/packagist/v/theofidry/alice-fixtures-extension.svg?style=flat-square)](https://packagist.org/packages/theofidry/alice-fixtures-extension)
 [![Build Status](https://img.shields.io/travis/theofidry/AliceBundleExtension.svg?branch=master&style=flat-square)](https://travis-ci.org/theofidry/AliceBundleExtension?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/3a633c53-a83d-47d4-aeb5-d3675aa4853d.svg?style=flat-square)](https://insight.sensiolabs.com/projects/3a633c53-a83d-47d4-aeb5-d3675aa4853d)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/AliceBundleExtension.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/AliceBundleExtension/?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/theofidry/AliceFixturesExtension.svg?style=flat-square)](https://scrutinizer-ci.com/g/theofidry/AliceBundleExtension/?branch=master)
 
 
 ## Installation
