@@ -25,17 +25,28 @@ default:
     suites:
         default:
             contexts:
-                - Fidry\AliceFixturesExtension\Context\AliceContext:
-                    kernel: @kernel
-                    fixturesFinder: @hautelook_alice.doctrine.orm.fixtures_finder
-                    loader: @hautelook_alice.fixtures.loader
-                    persister: @doctrine.orm.entity_manager
-                    basePath: %paths.base%/test/Features/fixtures
+                - Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext
+
+                # or if you want to set the base path only for this context:
+                - Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext:
+                    basePath: %paths.base%/tests/Features/fixtures/ORM (default value)
     # ...
     extensions:
-        Fidry\AliceFixturesExtension\Extension: ~
+        Fidry\AliceFixturesExtension\Extension:
+            fixtures_base_path: ~ # default to %paths.base%/features/fixtures
 ```
 
+You have three contexts available:
+
+* `Fidry\AliceFixturesExtension\Context\Doctrine\AliceODMContext`
+* `Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext`
+* `Fidry\AliceFixturesExtension\Context\Doctrine\AlicePHPCRContext`
+
+With the default fixtures basePath respectively at:
+
+* `%paths.base%/tests/Features/fixtures/ODM`
+* `%paths.base%/tests/Features/fixtures/ORM`
+* `%paths.base%/tests/Features/fixtures/PHPCR`
 
 ## Basic usage
 
@@ -43,7 +54,7 @@ Assuming you have the same configuration as the [Installation section](#Installa
 fixture file:
 
 ```yaml
-# features/fixtures/dummy.yml
+# features/fixtures/ORM/dummy.yml
 
 AppBundle\Entity\Dummy:
     dummy_{1..10}:
@@ -53,9 +64,27 @@ AppBundle\Entity\Dummy:
 Then simply load your fixtures with the following step:
 
 ```gherkin
-Given the fixtures "user.yml" are loaded
-Given the fixtures "user.yml" are loaded with the persister "doctrine.orm.entity_manager"
+Given the fixtures file "dummy.yml" is loaded
+Given the fixtures file "dummy.yml" is loaded with the persister "doctrine.orm.entity_manager"
 ```
+
+## Steps
+
+For each context, you have the following steps available:
+
+* `@Given the database is empty`
+* `@Then I empty the database`
+
+* `@Given the fixtures :fixturesFile are loaded`
+* `@Given the fixtures file :fixturesFile is loaded`
+* `@Given the fixtures :fixturesFile are loaded with the persister :persister`
+* `@Given the fixtures file :fixturesFile is loaded with the persister :persister`
+
+Loading a file can be done in three ways:
+
+* Relative path: `"dummy.yml"`, will look for `contextBasePath/dummy.yml`
+* @Bundle path: `"@AppBundle/DataFixtures/ORM/dummy.yml"`, will resolve the `@AppBundle` for example `src/AppBundle/DataFixtures/ORM/dummy.yml`
+* Absolute path: `/dummy.yml`
 
 
 ## Credits

@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AliceORMContext extends AbstractAliceContextInterface
+class AliceORMContext extends AbstractAliceContext
 {
     /**
      * @var SchemaTool
@@ -48,7 +48,7 @@ class AliceORMContext extends AbstractAliceContextInterface
     }
 
     /**
-     * @BeforeScenario @createSchema
+     * {@inheritdoc}
      */
     public function createSchema()
     {
@@ -56,7 +56,7 @@ class AliceORMContext extends AbstractAliceContextInterface
     }
 
     /**
-     * @BeforeScenario @dropSchema
+     * {@inheritdoc}
      */
     public function dropSchema()
     {
@@ -64,28 +64,11 @@ class AliceORMContext extends AbstractAliceContextInterface
     }
 
     /**
-     * @Given the database is empty
-     * @Then I empty the database
+     * {@inheritdoc}
      */
     public function emptyDatabase()
     {
         $this->dropSchema();
         $this->createSchema();
-    }
-
-    /**
-     * @BeforeScenario @createSchema
-     */
-    public function createDatabase()
-    {
-        // TODO: Implement createDatabase() method.
-    }
-
-    /**
-     * @BeforeScenario @dropSchema
-     */
-    public function dropDatabase()
-    {
-        // TODO: Implement dropDatabase() method.
     }
 }

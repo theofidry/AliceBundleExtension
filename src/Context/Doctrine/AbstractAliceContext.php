@@ -26,7 +26,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-abstract class AbstractAliceContextInterface implements KernelAwareContext, AliceContextInterface
+abstract class AbstractAliceContext implements KernelAwareContext, AliceContextInterface
 {
     /**
      * @var string
@@ -114,21 +114,6 @@ abstract class AbstractAliceContextInterface implements KernelAwareContext, Alic
     {
         return $this->basePath;
     }
-
-    /**
-     * @BeforeScenario @createSchema
-     */
-    abstract public function createDatabase();
-
-    /**
-     * @BeforeScenario @dropSchema
-     */
-    abstract public function dropDatabase();
-
-    /**
-     * @Given the database is empty
-     */
-    abstract public function emptyDatabase();
 
     /**
      * @Transform /^service$/

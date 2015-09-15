@@ -14,6 +14,9 @@ namespace Fidry\AliceFixturesExtension\Context\Initializer;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Initializer\ContextInitializer;
 use Fidry\AliceFixturesExtension\Context\AliceContextInterface;
+use Fidry\AliceFixturesExtension\Context\Doctrine\AliceODMContext;
+use Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext;
+use Fidry\AliceFixturesExtension\Context\Doctrine\AlicePHPCRContext;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
@@ -45,8 +48,24 @@ class AliceContextInitializer implements ContextInitializer
         }
 
         /** @var AliceContextInterface $context */
+        $fixturesBasePath = $this->fixturesBasePath;
+        switch (true) {
+
+            case $context instanceof AliceODMContext:
+                $fixturesBasePath .= '/ODM';
+                break;
+
+            case $context instanceof AliceORMContext:
+                $fixturesBasePath .= '/ORM';
+                break;
+
+            case $context instanceof AlicePHPCRContext:
+                $fixturesBasePath .= '/PHPCR';
+                break;
+        }
+
         if (null === $context->getBasePath()) {
-            $context->setBasePath($this->fixturesBasePath);
+            $context->setBasePath($fixturesBasePath);
         }
     }
 }

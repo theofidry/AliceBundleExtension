@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AliceODMContext extends AbstractAliceContextInterface
+class AliceODMContext extends AbstractAliceContext
 {
     /**
      * {@inheritdoc}
@@ -33,5 +33,29 @@ class AliceODMContext extends AbstractAliceContextInterface
         );
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createSchema()
+    {
+        // TODO: Implement createDatabase() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function dropSchema()
+    {
+        // TODO: Implement dropDatabase() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function emptyDatabase()
+    {
+        // TODO: Implement emptyDatabase() method.
     }
 }

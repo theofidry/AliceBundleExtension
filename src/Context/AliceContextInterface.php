@@ -19,6 +19,22 @@ use Nelmio\Alice\PersisterInterface;
 interface AliceContextInterface
 {
     /**
+     * @BeforeScenario @createSchema
+     */
+    public function createSchema();
+
+    /**
+     * @BeforeScenario @dropSchema
+     */
+    public function dropSchema();
+
+    /**
+     * @Given the database is empty
+     * @Then I empty the database
+     */
+    public function emptyDatabase();
+
+    /**
      * @Given the fixtures :fixturesFile are loaded
      * @Given the fixtures file :fixturesFile is loaded
      * @Given the fixtures :fixturesFile are loaded with the persister :persister
