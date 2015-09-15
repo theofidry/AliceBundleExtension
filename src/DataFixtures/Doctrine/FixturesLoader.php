@@ -102,7 +102,7 @@ class FixturesLoader implements AliceFixturesExtensionFixturesLoaderInterface
             $this->loaderGenerator->generate($this->loader, $this->fixturesLoader, $bundles, $environment),
             $fixtures,
             false,
-            function() {}
+            function () {}
         );
     }
 
