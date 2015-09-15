@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -11,8 +11,8 @@
 
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\ORM\EntityManager;
-use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\AnotherDummy;
-use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy;
+use Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\Entity\AnotherDummy;
+use Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy;
 use PHPUnit_Framework_Assert as PHPUnit;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -76,9 +76,9 @@ class FeatureContext implements KernelAwareContext
         }
 
         $this->entityManager->flush();
-        $this->entityManager->clear('Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy');
+        $this->entityManager->clear('Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\Entity\Dummy');
         $this->entityManager->clear(
-            'Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\Entity\AnotherDummy'
+            'Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\Entity\AnotherDummy'
         );
     }
 

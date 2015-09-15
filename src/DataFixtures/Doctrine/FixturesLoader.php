@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\DataFixtures\Doctrine;
+namespace Fidry\AliceBundleExtension\DataFixtures\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Fidry\AliceFixturesExtension\DataFixtures\Doctrine\FixturesLoaderInterface as AliceFixturesExtensionFixturesLoaderInterface;
+use Fidry\AliceBundleExtension\DataFixtures\Doctrine\FixturesLoaderInterface as AliceBundleExtensionFixturesLoaderInterface;
 use Hautelook\AliceBundle\Alice\DataFixtures\Fixtures\LoaderInterface as FixturesLoaderInterface;
 use Hautelook\AliceBundle\Alice\DataFixtures\LoaderInterface;
 use Hautelook\AliceBundle\Doctrine\DataFixtures\Executor\FixturesExecutorInterface;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class FixturesLoader implements AliceFixturesExtensionFixturesLoaderInterface
+class FixturesLoader implements AliceBundleExtensionFixturesLoaderInterface
 {
     /**
      * @var FixturesExecutorInterface

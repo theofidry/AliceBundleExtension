@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\EventSubscriber;
+namespace Fidry\AliceBundleExtension\EventSubscriber;
 
 use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\EventDispatcher\Event\FeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
-use Fidry\AliceFixturesExtension\DataFixtures\Doctrine\FixturesLoaderInterface;
-use Fidry\AliceFixturesExtension\Extension;
+use Fidry\AliceBundleExtension\DataFixtures\Doctrine\FixturesLoaderInterface;
+use Fidry\AliceBundleExtension\Extension;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

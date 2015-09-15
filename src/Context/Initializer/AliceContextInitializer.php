@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Context\Initializer;
+namespace Fidry\AliceBundleExtension\Context\Initializer;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Initializer\ContextInitializer;
-use Fidry\AliceFixturesExtension\Context\AliceContextInterface;
-use Fidry\AliceFixturesExtension\Context\Doctrine\AliceODMContext;
-use Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext;
-use Fidry\AliceFixturesExtension\Context\Doctrine\AlicePHPCRContext;
+use Fidry\AliceBundleExtension\Context\AliceContextInterface;
+use Fidry\AliceBundleExtension\Context\Doctrine\AliceODMContext;
+use Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext;
+use Fidry\AliceBundleExtension\Context\Doctrine\AlicePHPCRContext;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>

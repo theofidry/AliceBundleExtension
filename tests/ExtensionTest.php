@@ -1,14 +1,14 @@
 <?php
 
-namespace Fidry\AliceFixturesExtension\Tests;
+namespace Fidry\AliceBundleExtension\Tests;
 
-use Fidry\AliceFixturesExtension\Extension;
+use Fidry\AliceBundleExtension\Extension;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
- * @coversDefaultClass Fidry\AliceFixturesExtension\Extension
+ * @coversDefaultClass Fidry\AliceBundleExtension\Extension
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
@@ -61,7 +61,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
         $containerBuilderProphecy
             ->setDefinition(
                 'behat.alice_fixtures_extension.alice_context_initializer',
-                $this->definition('Fidry\AliceFixturesExtension\Context\Initializer\AliceContextInitializer')
+                $this->definition('Fidry\AliceBundleExtension\Context\Initializer\AliceContextInitializer')
             )
             ->shouldBeCalled()
         ;

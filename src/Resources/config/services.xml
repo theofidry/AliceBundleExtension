@@ -5,20 +5,20 @@
     <services>
 
         <service id="behat.alice_fixtures_extension.alice_context_initializer"
-                 class="Fidry\AliceFixturesExtension\Context\Initializer\AliceContextInitializer">
+                 class="Fidry\AliceBundleExtension\Context\Initializer\AliceContextInitializer">
             <argument>%behat.alice_fixtures_extension.fixtures_base_path%</argument>
             <tag name="context.initializer"/>
         </service>
 
         <!--<service id="behat.alice_fixtures_extension.listener.hook_listener"-->
-                 <!--class="Fidry\AliceFixturesExtension\EventSubscriber\HookListener">-->
+                 <!--class="Fidry\AliceBundleExtension\EventSubscriber\HookListener">-->
             <!--<argument>%behat.alice_fixtures_extension.lifetime%</argument>-->
             <!--<argument type="service" id="behat.alice_fixtures_extension.doctrine.orm.fixture_loader" />-->
             <!--<tag name="event_dispatcher.subscriber" />-->
         <!--</service>-->
 
         <!--<service id="behat.alice_fixtures_extension.doctrine.orm.fixture_loader"-->
-                 <!--class="Fidry\AliceFixturesExtension\DataFixtures/Doctrine\FixturesLoader">-->
+                 <!--class="Fidry\AliceBundleExtension\DataFixtures/Doctrine\FixturesLoader">-->
             <!--<argument type="service" id="symfony2_extension.kernel" />-->
             <!--<argument type="service" id="doctrine.orm.default_entity_manager" />-->
             <!--<argument type="service" id="hautelook_alice.fixtures.loader" />-->
