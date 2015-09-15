@@ -84,9 +84,10 @@ For each context, you have the following steps available:
 
 Loading a file can be done in three ways:
 
-* Relative path: `"dummy.yml"`, will look for `contextBasePath/dummy.yml`
-* @Bundle path: `"@AppBundle/DataFixtures/ORM/dummy.yml"`, will resolve the `@AppBundle` for example `src/AppBundle/DataFixtures/ORM/dummy.yml`
-* Absolute path: `/dummy.yml`
+| Type of path | fixtures file path | computed fixtures file path |
+| Relative path | `"dummy.yml"` | `contextBasePath/dummy.yml`, ex: `%paths.base%/tests/Features/fixtures/ORM/dummy.yml` |
+| @Bundle path | `"@AppBundle/DataFixtures/ORM/dummy.yml"` | `src/AppBundle/DataFixtures/ORM/dummy.yml` (example)
+| Absolute path | `/dummy.yml` | unchanged |
 
 
 ## Credits
