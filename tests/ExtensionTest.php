@@ -85,7 +85,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
      */
     public function definition($class)
     {
-        return \Prophecy\Argument::that(function ($args) use ($class) {
+        return \Prophecy\Argument::that(function($args) use ($class) {
             /** @var Definition $args */
             if (false === $args instanceof Definition) {
                 return false;
@@ -104,7 +104,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
      */
     private function service($filePath)
     {
-        return \Prophecy\Argument::that(function ($args) use ($filePath) {
+        return \Prophecy\Argument::that(function($args) use ($filePath) {
             /** @var FileResource $args */
             if (false === $args instanceof FileResource) {
                 return false;
