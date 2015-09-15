@@ -1,5 +1,5 @@
 {
-    "name": "theofidry/alice-fixtures-extension",
+    "name": "theofidry/alice-bundle-extension",
     "description": "Extension to load fixtures files with HautelookAliceBundle.",
     "keywords": ["Symfony", "Fixture", "ORM", "Alice", "Faker", "Behat", "Context", "Extension"],
     "type": "library",
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Fidry\\AliceFixturesExtension\\": "src"
+            "Fidry\\AliceBundleExtension\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Fidry\\AliceFixturesExtension\\Tests\\": "tests"
+            "Fidry\\AliceBundleExtension\\Tests\\": "tests"
         }
     }
 }

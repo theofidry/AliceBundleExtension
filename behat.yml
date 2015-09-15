@@ -6,7 +6,7 @@ default:
             paths: [ %paths.base%/tests/Features ]
             contexts:
                 - FeatureContext
-                - Fidry\AliceFixturesExtension\Context\Doctrine\AliceORMContext:
+                - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext:
                     basePath: %paths.base%/tests/Features/fixtures/ORM
 
     extensions:
@@ -16,5 +16,5 @@ default:
                 debug: true
                 path: tests/Functional/AppKernel.php
                 bootstrap: tests/Functional/autoload.php
-        Fidry\AliceFixturesExtension\Extension:
+        Fidry\AliceBundleExtension\Extension:
             fixtures_base_path: %paths.base%/tests/Features/fixtures

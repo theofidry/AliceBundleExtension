@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\DataFixtures\Doctrine;
+namespace Fidry\AliceBundleExtension\DataFixtures\Doctrine;
 
 /**
  * Class responsible for loading the fixtures and persisting them into the database.

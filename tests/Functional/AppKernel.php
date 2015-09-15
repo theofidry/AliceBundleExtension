@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -10,7 +10,7 @@
  */
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use Fidry\AliceFixturesExtension\Tests\Functional\Bundle\TestBundle\TestBundle;
+use Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\TestBundle;
 use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;

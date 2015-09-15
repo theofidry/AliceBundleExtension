@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Context\Doctrine;
+namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Component\HttpKernel\KernelInterface;

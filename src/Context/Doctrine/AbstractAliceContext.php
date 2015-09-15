@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Fidry\AliceFixturesExtension package.
+ * This file is part of the Fidry\AliceBundleExtension package.
  *
  * (c) Théo FIDRY <theo.fidry@gmail.com>
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Fidry\AliceFixturesExtension\Context\Doctrine;
+namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ObjectManager;
-use Fidry\AliceFixturesExtension\Context\AliceContextInterface;
+use Fidry\AliceBundleExtension\Context\AliceContextInterface;
 use Hautelook\AliceBundle\Alice\DataFixtures\LoaderInterface;
 use Hautelook\AliceBundle\Finder\FixturesFinderInterface;
 use Nelmio\Alice\Persister\Doctrine;
