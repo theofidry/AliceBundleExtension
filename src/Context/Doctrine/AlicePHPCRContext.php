@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AlicePHPCRContext extends AbstractAliceContext
+class AlicePHPCRContext extends AbstractAliceContextInterface
 {
     /**
      * {@inheritdoc}
@@ -33,5 +33,29 @@ class AlicePHPCRContext extends AbstractAliceContext
         );
 
         return $this;
+    }
+
+    /**
+     * @BeforeScenario @createSchema
+     */
+    public function createDatabase()
+    {
+        // TODO: Implement createDatabase() method.
+    }
+
+    /**
+     * @BeforeScenario @dropSchema
+     */
+    public function dropDatabase()
+    {
+        // TODO: Implement dropDatabase() method.
+    }
+
+    /**
+     * @Given the database is empty
+     */
+    public function emptyDatabase()
+    {
+        // TODO: Implement emptyDatabase() method.
     }
 }

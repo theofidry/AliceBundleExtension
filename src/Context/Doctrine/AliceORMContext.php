@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AliceORMContext extends AbstractAliceContext
+class AliceORMContext extends AbstractAliceContextInterface
 {
     /**
      * @var SchemaTool
@@ -71,5 +71,21 @@ class AliceORMContext extends AbstractAliceContext
     {
         $this->dropSchema();
         $this->createSchema();
+    }
+
+    /**
+     * @BeforeScenario @createSchema
+     */
+    public function createDatabase()
+    {
+        // TODO: Implement createDatabase() method.
+    }
+
+    /**
+     * @BeforeScenario @dropSchema
+     */
+    public function dropDatabase()
+    {
+        // TODO: Implement dropDatabase() method.
     }
 }

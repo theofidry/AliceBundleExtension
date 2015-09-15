@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class AliceODMContext extends AbstractAliceContext
+class AliceODMContext extends AbstractAliceContextInterface
 {
     /**
      * {@inheritdoc}

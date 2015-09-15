@@ -16,7 +16,7 @@ use Nelmio\Alice\PersisterInterface;
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-interface AliceContext
+interface AliceContextInterface
 {
     /**
      * @Given the fixtures :fixturesFile are loaded

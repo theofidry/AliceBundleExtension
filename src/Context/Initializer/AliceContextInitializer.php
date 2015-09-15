@@ -13,7 +13,7 @@ namespace Fidry\AliceFixturesExtension\Context\Initializer;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Initializer\ContextInitializer;
-use Fidry\AliceFixturesExtension\Context\AliceContext;
+use Fidry\AliceFixturesExtension\Context\AliceContextInterface;
 
 /**
  * @author Théo FIDRY <theo.fidry@gmail.com>
@@ -40,13 +40,13 @@ class AliceContextInitializer implements ContextInitializer
      */
     public function initializeContext(Context $context)
     {
-        //        if (false === $context instanceof AliceContext) {
-//            return;
-//        }
-//
-//        /** @var AliceContext $context */
-//        if (null === $context->getBasePath()) {
-//            $context->setBasePath('aze');
-//        }
+        if (false === $context instanceof AliceContextInterface) {
+            return;
+        }
+
+        /** @var AliceContextInterface $context */
+        if (null === $context->getBasePath()) {
+            $context->setBasePath($this->fixturesBasePath);
+        }
     }
 }

@@ -24,8 +24,11 @@ install:
     - rm -rf tests/Features/Functional/cache/*
 
 before_script:
-    - bash -c 'php console doctrine:database:create --env=test'
-    - bash -c 'php console doctrine:schema:create --env=test'
+    - php console doctrine:database:create --env=test
+    - php console doctrine:schema:create --env=test
 
 script:
     - vendor/bin/behat
+
+notifications:
+    email: false

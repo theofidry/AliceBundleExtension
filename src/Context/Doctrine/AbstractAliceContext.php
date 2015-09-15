@@ -13,7 +13,7 @@ namespace Fidry\AliceFixturesExtension\Context\Doctrine;
 
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ObjectManager;
-use Fidry\AliceFixturesExtension\Context\AliceContext;
+use Fidry\AliceFixturesExtension\Context\AliceContextInterface;
 use Hautelook\AliceBundle\Alice\DataFixtures\LoaderInterface;
 use Hautelook\AliceBundle\Finder\FixturesFinderInterface;
 use Nelmio\Alice\Persister\Doctrine;
@@ -26,7 +26,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-abstract class AbstractAliceContext implements KernelAwareContext, AliceContext
+abstract class AbstractAliceContextInterface implements KernelAwareContext, AliceContextInterface
 {
     /**
      * @var string
@@ -114,21 +114,21 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContext
     {
         return $this->basePath;
     }
-//
-//    /**
-//     * @BeforeScenario @createSchema
-//     */
-//    abstract public function createDatabase();
-//
-//    /**
-//     * @BeforeScenario @dropSchema
-//     */
-//    abstract public function dropDatabase();
-//
-//    /**
-//     * @Given the database is empty
-//     */
-//    abstract public function emptyDatabase();
+
+    /**
+     * @BeforeScenario @createSchema
+     */
+    abstract public function createDatabase();
+
+    /**
+     * @BeforeScenario @dropSchema
+     */
+    abstract public function dropDatabase();
+
+    /**
+     * @Given the database is empty
+     */
+    abstract public function emptyDatabase();
 
     /**
      * @Transform /^service$/
