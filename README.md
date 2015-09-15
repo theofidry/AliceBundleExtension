@@ -72,13 +72,15 @@ Given the fixtures file "dummy.yml" is loaded with the persister "doctrine.orm.e
 
 For each context, you have the following steps available:
 
-* `@Given the database is empty`
-* `@Then I empty the database`
+```gherkin
+@Given the database is empty
+@Then I empty the database
 
-* `@Given the fixtures :fixturesFile are loaded`
-* `@Given the fixtures file :fixturesFile is loaded`
-* `@Given the fixtures :fixturesFile are loaded with the persister :persister`
-* `@Given the fixtures file :fixturesFile is loaded with the persister :persister`
+@Given the fixtures "fixturesFile" are loaded
+@Given the fixtures file "fixturesFile" is loaded
+@Given the fixtures "fixturesFile" are loaded with the persister "persister_service_id"
+@Given the fixtures file "fixturesFile" is loaded with the persister "persister_service_id"
+```
 
 Loading a file can be done in three ways:
 
