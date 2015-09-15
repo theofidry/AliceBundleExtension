@@ -13,11 +13,11 @@ namespace Fidry\AliceFixturesExtension\EventSubscriber;
 
 use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
 use Behat\Behat\EventDispatcher\Event\BeforeFeatureTested;
+use Behat\Behat\EventDispatcher\Event\ExampleTested;
 use Behat\Behat\EventDispatcher\Event\FeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
-use Behat\Behat\EventDispatcher\Event\ExampleTested;
-use Fidry\AliceFixturesExtension\Extension;
 use Fidry\AliceFixturesExtension\DataFixtures\Doctrine\FixturesLoaderInterface;
+use Fidry\AliceFixturesExtension\Extension;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Fidry\AliceFixturesExtension\Tests;
+namespace Fidry\AliceFixturesExtension\tests;
 
 use Fidry\AliceFixturesExtension\Extension;
 use PHPUnit_Framework_TestCase;
@@ -16,7 +16,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
 {
     private static $defaultConfig = [
         'fixtures_base_path' => null,
-        'db_drivers' => [
+        'db_drivers'         => [
             'orm'     => null,
             'mongodb' => null,
             'phpcr'   => null,
@@ -33,7 +33,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
     {
         $containerBuilderProphecy = $this->prophesize('Symfony\Component\DependencyInjection\ContainerBuilder');
 
-        $containerBuilderProphecy->hasExtension("http://symfony.com/schema/dic/services")->shouldBeCalled();
+        $containerBuilderProphecy->hasExtension('http://symfony.com/schema/dic/services')->shouldBeCalled();
         $containerBuilderProphecy->getParameter('paths.base')->willReturn('basePath');
 
         $containerBuilderProphecy
@@ -41,35 +41,30 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
                 'behat.alice_fixtures_extension.fixtures_base_path',
                 'basePath/features/fixtures'
             )
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
         $containerBuilderProphecy
             ->setParameter(
                 'behat.alice_fixtures_extension.db_drivers',
                 self::$defaultConfig['db_drivers']
             )
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
         $containerBuilderProphecy
             ->setParameter(
                 'behat.alice_fixtures_extension.lifetime',
                 self::$defaultConfig['lifetime']
             )
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
 
         $containerBuilderProphecy
             ->setDefinition(
                 'behat.alice_fixtures_extension.alice_context_initializer',
                 $this->definition('Fidry\AliceFixturesExtension\Context\Initializer\AliceContextInitializer')
             )
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
 
         $containerBuilderProphecy
             ->addResource($this->service(getcwd().'/src/Resources/config/services.xml'))
-            ->shouldBeCalled()
-        ;
+            ->shouldBeCalled();
 
         $extension = new Extension();
 
@@ -91,6 +86,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
                 return false;
             }
             $service = (new \ReflectionClass($args->getClass()))->newInstanceWithoutConstructor();
+
             return $service instanceof $class;
         });
     }
@@ -109,6 +105,7 @@ class ExtensionTest extends PHPUnit_Framework_TestCase
             if (false === $args instanceof FileResource) {
                 return false;
             }
+
             return $filePath === $args->getResource();
         });
     }
