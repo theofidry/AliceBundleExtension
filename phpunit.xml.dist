@@ -8,7 +8,7 @@
 
     <testsuites>
         <testsuite name="AliceBundle Test Suite">
-            <directory>./tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 

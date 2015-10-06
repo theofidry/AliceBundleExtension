@@ -15,7 +15,7 @@
         "php": ">=5.4.0",
         "behat/behat": "~3.0",
         "behat/symfony2-extension": "^2.0",
-        "hautelook/alice-bundle": "~1.0@beta"
+        "hautelook/alice-bundle": "~1.0"
     },
     "require-dev": {
         "doctrine/orm": "~2.4",

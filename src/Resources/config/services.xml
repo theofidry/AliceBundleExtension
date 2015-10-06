@@ -10,26 +10,6 @@
             <tag name="context.initializer"/>
         </service>
 
-        <!--<service id="behat.alice_fixtures_extension.listener.hook_listener"-->
-                 <!--class="Fidry\AliceBundleExtension\EventSubscriber\HookListener">-->
-            <!--<argument>%behat.alice_fixtures_extension.lifetime%</argument>-->
-            <!--<argument type="service" id="behat.alice_fixtures_extension.doctrine.orm.fixture_loader" />-->
-            <!--<tag name="event_dispatcher.subscriber" />-->
-        <!--</service>-->
-
-        <!--<service id="behat.alice_fixtures_extension.doctrine.orm.fixture_loader"-->
-                 <!--class="Fidry\AliceBundleExtension\DataFixtures/Doctrine\FixturesLoader">-->
-            <!--<argument type="service" id="symfony2_extension.kernel" />-->
-            <!--<argument type="service" id="doctrine.orm.default_entity_manager" />-->
-            <!--<argument type="service" id="hautelook_alice.fixtures.loader" />-->
-            <!--<argument type="service" id="hautelook_alice.alice.fixtures.loader" />-->
-            <!--<argument type="service" id="hautelook_alice.doctrine.orm.fixtures_finder" />-->
-            <!--<argument type="service" id="hautelook_alice.bundle_resolver" />-->
-            <!--<argument type="service" id="hautelook_alice.doctrine.generator.loader_generator" />-->
-            <!--<argument type="service" id="hautelook_alice.doctrine.executor.fixtures_executor" />-->
-            <!--<argument type="service" id="symfony2_extension.kernel" />-->
-        <!--</service>-->
-
     </services>
 
 </container>
