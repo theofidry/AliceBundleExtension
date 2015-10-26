@@ -140,7 +140,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     /**
      * {@inheritdoc}
      */
-    public function thereAreFixtures($fixturesFile, $persister = null)
+    public function thereAreFixtures($fixturesFiles, $persister = null)
     {
         if (null === $persister) {
             $persister = $this->persister;
@@ -150,13 +150,17 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
             $persister = $this->castServiceIdToPersister($persister);
         }
 
-        if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
-            $fixturesFile = sprintf('%s/%s', $this->basePath, $fixturesFile);
+        $fixturesFiles = array_map('trim', explode(',', $fixturesFiles));
+
+        foreach ($fixturesFiles as $key => $fixturesFile) {
+            if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
+                $fixturesFiles[$key] = sprintf('%s/%s', $this->basePath, $fixturesFile);
+            }
         }
 
         $this->loader->load(
             $persister,
-            $this->fixturesFinder->resolveFixtures($this->kernel, [$fixturesFile])
+            $this->fixturesFinder->resolveFixtures($this->kernel, $fixturesFiles)
         );
     }
 

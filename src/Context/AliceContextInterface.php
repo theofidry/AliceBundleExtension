@@ -35,15 +35,17 @@ interface AliceContextInterface
     public function emptyDatabase();
 
     /**
-     * @Given the fixtures :fixturesFile are loaded
-     * @Given the fixtures file :fixturesFile is loaded
-     * @Given the fixtures :fixturesFile are loaded with the persister :persister
-     * @Given the fixtures file :fixturesFile is loaded with the persister :persister
+     * @Given the fixtures :fixturesFiles are loaded
+     * @Given the fixtures file :fixturesFiles is loaded
+     * @Given the fixtures files :fixturesFiles are loaded
+     * @Given the fixtures :fixturesFiles are loaded with the persister :persister
+     * @Given the fixtures file :fixturesFiles is loaded with the persister :persister
+     * @Given the fixtures files :fixturesFiles are loaded with the persister :persister
      *
-     * @param string             $fixturesFile Path to the fixtures
+     * @param string             $fixturesFiles Path to the fixtures
      * @param PersisterInterface $persister
      */
-    public function thereAreFixtures($fixturesFile, $persister = null);
+    public function thereAreFixtures($fixturesFiles, $persister = null);
 
     /**
      * @param string $basePath
