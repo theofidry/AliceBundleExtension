@@ -11,6 +11,7 @@
 
 namespace Fidry\AliceBundleExtension\Context;
 
+use Behat\Gherkin\Node\TableNode;
 use Nelmio\Alice\PersisterInterface;
 
 /**
@@ -44,6 +45,15 @@ interface AliceContextInterface
      * @param PersisterInterface $persister
      */
     public function thereAreFixtures($fixturesFile, $persister = null);
+
+    /**
+     * @Given the following fixtures files are loaded:
+     * @Given the following fixtures files are loaded with the persister :persister:
+     *
+     * @param TableNode          $fixturesFiles Path to the fixtures
+     * @param PersisterInterface $persister
+     */
+    public function thereAreSeveralFixtures(TableNode $fixturesFiles, $persister = null);
 
     /**
      * @param string $basePath

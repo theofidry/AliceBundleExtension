@@ -11,6 +11,7 @@
 
 namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
+use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ObjectManager;
 use Fidry\AliceBundleExtension\Context\AliceContextInterface;
@@ -142,6 +143,29 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
      */
     public function thereAreFixtures($fixturesFile, $persister = null)
     {
+        $this->loadFixtures([$fixturesFile], $persister);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function thereAreSeveralFixtures(TableNode $fixturesFileRows, $persister = null)
+    {
+        $fixturesFiles = [];
+
+        foreach ($fixturesFileRows->getRows() as $fixturesFileRow) {
+            $fixturesFiles[] = $fixturesFileRow[0];
+        }
+
+        $this->loadFixtures($fixturesFiles, $persister);
+    }
+
+    /**
+     * @param array              $fixturesFiles
+     * @param PersisterInterface $persister
+     */
+    private function loadFixtures($fixturesFiles, $persister = null)
+    {
         if (null === $persister) {
             $persister = $this->persister;
         }
@@ -150,13 +174,15 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
             $persister = $this->castServiceIdToPersister($persister);
         }
 
-        if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
-            $fixturesFile = sprintf('%s/%s', $this->basePath, $fixturesFile);
+        foreach ($fixturesFiles as $key => $fixturesFile) {
+            if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
+                $fixturesFiles[$key] = sprintf('%s/%s', $this->basePath, $fixturesFile);
+            }
         }
 
         $this->loader->load(
             $persister,
-            $this->fixturesFinder->resolveFixtures($this->kernel, [$fixturesFile])
+            $this->fixturesFinder->resolveFixtures($this->kernel, $fixturesFiles)
         );
     }
 

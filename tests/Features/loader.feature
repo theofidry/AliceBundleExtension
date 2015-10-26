@@ -12,7 +12,7 @@ Feature: Test Doctrine ORM context
     Given the fixtures file "@TestBundle/DataFixtures/ORM/dummy.yml" is loaded
     Then the database should contain 10 "dummy" entities
 
-  Scenario: Loads a fixture file base on basePath
+  Scenario: Loads a fixture file based on basePath
     Given the database is empty
     Given the fixtures file "another_dummy.yml" is loaded
     Then the database should contain 10 "another_dummy" entities
@@ -26,3 +26,17 @@ Feature: Test Doctrine ORM context
     Given the database is empty
     Given the fixtures file "another_dummy.yml" is loaded with the persister "doctrine.orm.entity_manager"
     Then the database should contain 10 "another_dummy" entities
+
+  Scenario: Loads several fixtures files based on basePath
+    Given the database is empty
+    Given the following fixtures files are loaded:
+      | another_dummy.yml     |
+      | one_another_dummy.yml |
+    Then the database should contain 11 "another_dummy" entities
+
+  Scenario: Loads several fixtures files with @Bundlename notation
+    Given the database is empty
+    Given the following fixtures files are loaded:
+      | @TestBundle/DataFixtures/ORM/dummy.yml             |
+      | @TestBundle/DataFixtures/ORM/one_another_dummy.yml |
+    Then the database should contain 11 "dummy" entities
