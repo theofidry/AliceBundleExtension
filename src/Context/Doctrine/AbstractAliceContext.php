@@ -11,6 +11,7 @@
 
 namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
+use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\Common\Persistence\ObjectManager;
 use Fidry\AliceBundleExtension\Context\AliceContextInterface;
@@ -140,7 +141,30 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     /**
      * {@inheritdoc}
      */
-    public function thereAreFixtures($fixturesFiles, $persister = null)
+    public function thereAreFixtures($fixturesFile, $persister = null)
+    {
+        $this->loadFixtures(array($fixturesFile), $persister);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function thereAreSeveralFixtures(TableNode $fixturesFileRows, $persister = null)
+    {
+        $fixturesFiles = array();
+
+        foreach ($fixturesFileRows->getRows() as $fixturesFileRow) {
+            $fixturesFiles[] = $fixturesFileRow[0];
+        }
+
+        $this->loadFixtures($fixturesFiles, $persister);
+    }
+
+    /**
+     * @param array              $fixturesFiles
+     * @param PersisterInterface $persister
+     */
+    private function loadFixtures($fixturesFiles, $persister = null)
     {
         if (null === $persister) {
             $persister = $this->persister;
@@ -149,8 +173,6 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
         if (true === is_string($persister)) {
             $persister = $this->castServiceIdToPersister($persister);
         }
-
-        $fixturesFiles = array_map('trim', explode(',', $fixturesFiles));
 
         foreach ($fixturesFiles as $key => $fixturesFile) {
             if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {

@@ -29,10 +29,14 @@ Feature: Test Doctrine ORM context
 
   Scenario: Loads several fixtures files based on basePath
     Given the database is empty
-    Given the fixtures files "another_dummy.yml, one_another_dummy.yml" are loaded
+    Given the following fixtures files are loaded:
+      | another_dummy.yml     |
+      | one_another_dummy.yml |
     Then the database should contain 11 "another_dummy" entities
 
   Scenario: Loads several fixtures files with @Bundlename notation
     Given the database is empty
-    Given the fixtures files "@TestBundle/DataFixtures/ORM/dummy.yml, @TestBundle/DataFixtures/ORM/one_another_dummy.yml" are loaded
+    Given the following fixtures files are loaded:
+      | @TestBundle/DataFixtures/ORM/dummy.yml             |
+      | @TestBundle/DataFixtures/ORM/one_another_dummy.yml |
     Then the database should contain 11 "dummy" entities
