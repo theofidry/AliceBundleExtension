@@ -143,7 +143,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
      */
     public function thereAreFixtures($fixturesFile, $persister = null)
     {
-        $this->loadFixtures(array($fixturesFile), $persister);
+        $this->loadFixtures([$fixturesFile], $persister);
     }
 
     /**
@@ -151,7 +151,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
      */
     public function thereAreSeveralFixtures(TableNode $fixturesFileRows, $persister = null)
     {
-        $fixturesFiles = array();
+        $fixturesFiles = [];
 
         foreach ($fixturesFileRows->getRows() as $fixturesFileRow) {
             $fixturesFiles[] = $fixturesFileRow[0];
