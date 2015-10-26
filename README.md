@@ -66,6 +66,9 @@ Then simply load your fixtures with the following step:
 ```gherkin
 Given the fixtures file "dummy.yml" is loaded
 Given the fixtures file "dummy.yml" is loaded with the persister "doctrine.orm.entity_manager"
+Given the following fixtures files are loaded:
+  | fixtures1.yml |
+  | fixtures2.yml |
 ```
 
 ## Steps
@@ -80,6 +83,12 @@ For each context, you have the following steps available:
 @Given the fixtures file "fixturesFile" is loaded
 @Given the fixtures "fixturesFile" are loaded with the persister "persister_service_id"
 @Given the fixtures file "fixturesFile" is loaded with the persister "persister_service_id"
+@Given the following fixtures files are loaded:
+  | fixtures1.yml |
+  | fixtures2.yml |
+@Given the following fixtures files are loaded with the persister "persister_service_id":
+  | fixtures1.yml |
+  | fixtures2.yml |
 ```
 
 Loading a file can be done in three ways:
