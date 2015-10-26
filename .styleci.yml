@@ -1,3 +1,2 @@
 disabled:
-    - psr0
     - multiline_spaces_before_semicolon
