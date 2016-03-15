@@ -27,7 +27,8 @@
         "symfony/expression-language": "^2.7",
         "symfony/framework-bundle": "~2.1",
         "symfony/yaml": "~2.1",
-        "theofidry/psysh-bundle": "~1.1"
+        "theofidry/psysh-bundle": "~1.1",
+        "doctrine/mongodb-odm-bundle": "~3.0"
     },
     "autoload": {
         "psr-4": {
