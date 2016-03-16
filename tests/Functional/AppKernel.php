@@ -10,6 +10,7 @@
  */
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle;
 use Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\TestBundle;
 use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
@@ -27,6 +28,7 @@ class AppKernel extends Kernel
             new HautelookAliceBundle(),
             new TestBundle(),
             new PsyshBundle(),
+            new DoctrineMongoDBBundle(),
         ];
     }
 

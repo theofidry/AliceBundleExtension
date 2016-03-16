@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author Théo FIDRY <theo.fidry@gmail.com>
  */
-class FeatureContext implements KernelAwareContext
+class ORMFeatureContext implements KernelAwareContext
 {
     /**
      * @var EntityManager

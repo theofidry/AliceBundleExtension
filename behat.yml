@@ -2,12 +2,18 @@ default:
     autoload:
         '': %paths.base%/tests/Features/bootstrap
     suites:
-        default:
-            paths: [ %paths.base%/tests/Features ]
+        orm_context:
+            paths: [ %paths.base%/tests/Features/ORM ]
             contexts:
-                - FeatureContext
+                - ORMFeatureContext
                 - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext:
                     basePath: %paths.base%/tests/Features/fixtures/ORM
+        odm_context:
+            paths: [ %paths.base%/tests/Features/ODM ]
+            contexts:
+                - ODMFeatureContext
+                - Fidry\AliceBundleExtension\Context\Doctrine\AliceODMContext:
+                    basePath: %paths.base%/tests/Features/fixtures/ODM
 
     extensions:
         Behat\Symfony2Extension:

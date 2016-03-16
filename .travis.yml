@@ -16,7 +16,14 @@ php:
 matrix:
     allow_failures:
         - php: nightly
+        - php: hhvm
     fast_finish: true
+
+services:
+    - mongodb
+
+before_install:
+    - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
     - composer self-update

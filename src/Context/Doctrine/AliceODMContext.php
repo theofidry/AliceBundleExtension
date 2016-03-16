@@ -11,6 +11,7 @@
 
 namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
+use Doctrine\ODM\MongoDB\SchemaManager;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -21,6 +22,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class AliceODMContext extends AbstractAliceContext
 {
     /**
+     * @var SchemaManager
+     */
+    private $schemaManager;
+
+    /**
      * {@inheritdoc}
      */
     public function setKernel(KernelInterface $kernel)
@@ -29,8 +35,10 @@ class AliceODMContext extends AbstractAliceContext
             $kernel,
             $kernel->getContainer()->get('hautelook_alice.doctrine.mongodb.fixtures_finder'),
             $kernel->getContainer()->get('hautelook_alice.fixtures.loader'),
-            $this->resolvePersister($kernel->getContainer()->get('doctrine.mongodb.entity_manager'))
+            $this->resolvePersister($kernel->getContainer()->get('doctrine_mongodb.odm.default_document_manager'))
         );
+
+        $this->schemaManager = $kernel->getContainer()->get('doctrine_mongodb.odm.default_document_manager')->getSchemaManager();
 
         return $this;
     }
@@ -40,7 +48,8 @@ class AliceODMContext extends AbstractAliceContext
      */
     public function createSchema()
     {
-        // TODO: Implement createDatabase() method.
+        $this->schemaManager->createCollections();
+        $this->schemaManager->ensureIndexes();
     }
 
     /**
@@ -48,7 +57,8 @@ class AliceODMContext extends AbstractAliceContext
      */
     public function dropSchema()
     {
-        // TODO: Implement dropDatabase() method.
+        $this->schemaManager->deleteIndexes();
+        $this->schemaManager->dropCollections();
     }
 
     /**
@@ -56,6 +66,7 @@ class AliceODMContext extends AbstractAliceContext
      */
     public function emptyDatabase()
     {
-        // TODO: Implement emptyDatabase() method.
+        $this->dropSchema();
+        $this->createSchema();
     }
 }
