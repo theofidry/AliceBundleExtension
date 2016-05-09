@@ -174,10 +174,43 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
             $persister = $this->castServiceIdToPersister($persister);
         }
 
+        $fixtureBundles = [];
+        $fixtureDirectories = [];
+
         foreach ($fixturesFiles as $key => $fixturesFile) {
-            if (0 !== strpos($fixturesFile, '/') && 0 !== strpos($fixturesFile, '@')) {
-                $fixturesFiles[$key] = sprintf('%s/%s', $this->basePath, $fixturesFile);
+            if (0 === strpos($fixturesFile, '/')) {
+                if (is_dir($fixturesFile)) {
+                    $fixtureDirectories[] = $fixturesFile;
+                    unset($fixturesFiles[$key]);
+                }
+
+                continue;
             }
+
+            if (0 === strpos($fixturesFile, '@')) {
+                if (false === strpos($fixturesFile, '.')) {
+                    $fixtureBundles[] = $this->kernel->getBundle(substr($fixturesFile, 1));
+                    unset($fixturesFiles[$key]);
+                }
+
+                continue;
+            }
+
+            $fixturesFiles[$key] = sprintf('%s/%s', $this->basePath, $fixturesFile);
+        }
+
+        if (false === empty($fixtureBundles)) {
+            $fixturesFiles = array_merge(
+                $fixturesFiles,
+                $this->fixturesFinder->getFixtures($this->kernel, $fixtureBundles, null)
+            );
+        }
+
+        if (false === empty($fixtureDirectories)) {
+            $fixturesFiles = array_merge(
+                $fixturesFiles,
+                $this->fixturesFinder->getFixturesFromDirectory($fixtureDirectories)
+            );
         }
 
         $this->loader->load(
