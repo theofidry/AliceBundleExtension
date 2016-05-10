@@ -47,7 +47,9 @@ interface AliceContextInterface
     public function thereAreFixtures($fixturesFile, $persister = null);
 
     /**
+     * @Given the following fixtures are loaded:
      * @Given the following fixtures files are loaded:
+     * @Given the following fixtures are loaded with the persister :persister:
      * @Given the following fixtures files are loaded with the persister :persister:
      *
      * @param TableNode          $fixturesFiles Path to the fixtures

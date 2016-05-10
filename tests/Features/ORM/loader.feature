@@ -12,6 +12,11 @@ Feature: Test Doctrine ORM context
     Given the fixtures file "@TestBundle/DataFixtures/ORM/dummy.yml" is loaded
     Then the database should contain 10 "dummy" entities
 
+  Scenario: Loads a fixtures directory with @Bundlename notation
+    Given the database is empty
+    Given the fixtures "@TestBundle" are loaded
+    Then the database should contain 11 "dummy" entities
+
   Scenario: Loads a fixture file based on basePath
     Given the database is empty
     Given the fixtures file "another_dummy.yml" is loaded
@@ -21,6 +26,11 @@ Feature: Test Doctrine ORM context
     Given the database is empty
     Given the fixtures file "/home/travis/build/theofidry/AliceBundleExtension/tests/Features/fixtures/ORM/another_dummy.yml" is loaded
     Then the database should contain 10 "another_dummy" entities
+
+  Scenario: Loads a fixture directory with absolute path
+    Given the database is empty
+    Given the fixtures "/home/travis/build/theofidry/AliceBundleExtension/tests/Features/fixtures/ORM" are loaded
+    Then the database should contain 11 "another_dummy" entities
 
   Scenario: Loads a fixture file with a custom persister
     Given the database is empty
@@ -39,4 +49,11 @@ Feature: Test Doctrine ORM context
     Given the following fixtures files are loaded:
       | @TestBundle/DataFixtures/ORM/dummy.yml             |
       | @TestBundle/DataFixtures/ORM/one_another_dummy.yml |
+    Then the database should contain 11 "dummy" entities
+
+  Scenario: Loads several duplicated fixtures
+    Given the database is empty
+    Given the following fixtures files are loaded:
+      | @TestBundle/DataFixtures/ORM/dummy.yml |
+      | @TestBundle                            |
     Then the database should contain 11 "dummy" entities
