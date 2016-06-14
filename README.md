@@ -120,6 +120,8 @@ Loading a file can be done in three ways:
     </tobdy>
 </table>
 
+Paths can also be directories.
+
 
 ## Credits
 
