@@ -21,7 +21,7 @@
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "friendsofphp/php-cs-fixer": "~1.0",
+        "friendsofphp/php-cs-fixer": "~2.0@dev",
         "phpunit/phpunit": "^4.8",
         "symfony/console": "~2.1",
         "symfony/expression-language": "^2.7",
