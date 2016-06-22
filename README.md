@@ -130,6 +130,8 @@ Loading fixture files can be done as follows:
     </tobdy>
 </table>
 
+Paths can also be directories.
+
 
 ## Credits
 

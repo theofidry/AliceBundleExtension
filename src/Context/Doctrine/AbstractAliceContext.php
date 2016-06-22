@@ -202,7 +202,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
         if (false === empty($fixtureBundles)) {
             $fixturesFiles = array_merge(
                 $fixturesFiles,
-                $this->fixturesFinder->getFixtures($this->kernel, $fixtureBundles, null)
+                $this->fixturesFinder->getFixtures($this->kernel, $fixtureBundles, $this->kernel->getEnvironment())
             );
         }
 
