@@ -11,8 +11,9 @@
 
 namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Tools\SchemaTool;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Context to load fixtures files with Alice loader.
@@ -22,37 +23,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class AliceORMContext extends AbstractAliceContext
 {
     /**
-     * @var SchemaTool
-     */
-    private $schemaTool;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->init(
-            $kernel,
-            $kernel->getContainer()->get('hautelook_alice.doctrine.orm.fixtures_finder'),
-            $kernel->getContainer()->get('hautelook_alice.fixtures.loader'),
-            $this->resolvePersister($kernel->getContainer()->get('doctrine.orm.entity_manager'))
-        );
-
-        /** @var \Doctrine\ORM\EntityManager $entityManager */
-        $entityManager = $kernel->getContainer()->get('doctrine.orm.default_entity_manager');
-
-        $this->schemaTool = new SchemaTool($entityManager);
-        $this->classes = $entityManager->getMetadataFactory()->getAllMetadata();
-
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function createSchema()
     {
-        $this->schemaTool->createSchema($this->classes);
+        $this->getSchemaTool()->createSchema($this->getAllMetadatas());
     }
 
     /**
@@ -60,7 +35,7 @@ class AliceORMContext extends AbstractAliceContext
      */
     public function dropSchema()
     {
-        $this->schemaTool->dropSchema($this->classes);
+        $this->getSchemaTool()->dropSchema($this->getAllMetadatas());
     }
 
     /**
@@ -70,5 +45,45 @@ class AliceORMContext extends AbstractAliceContext
     {
         $this->dropSchema();
         $this->createSchema();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getPersister()
+    {
+        return $this->resolvePersister($this->getEntityManager());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getFixturesFinder()
+    {
+        return $this->kernel->getContainer()->get('hautelook_alice.doctrine.orm.fixtures_finder');
+    }
+
+    /**
+     * @return SchemaTool
+     */
+    private function getSchemaTool()
+    {
+        return new SchemaTool($this->getEntityManager());
+    }
+
+    /**
+     * @return ClassMetadata[]
+     */
+    private function getAllMetadatas()
+    {
+        return $this->getEntityManager()->getMetadataFactory()->getAllMetadata();
+    }
+
+    /**
+     * @return EntityManagerInterface
+     */
+    private function getEntityManager()
+    {
+        return $this->kernel->getContainer()->get('doctrine.orm.entity_manager');
     }
 }
