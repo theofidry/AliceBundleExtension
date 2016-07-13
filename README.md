@@ -91,7 +91,7 @@ For each context, you have the following steps available:
   | fixtures2.yml |
 ```
 
-Loading a file can be done in three ways:
+Loading fixture files can be done as follows:
 
 <table>
     <thead style="float: left">
@@ -116,6 +116,16 @@ Loading a file can be done in three ways:
             <td>Absolute path</td>
             <td>`/dummy.yml`</td>
             <td>unchanged</td>
+        </tr>
+        <tr>
+            <td>Absolute directory path</td>
+            <td>`/tests/Features/fixtures/ORM/`</td>
+            <td>`/tests/Features/fixtures/ORM/*`</td>
+        </tr>
+        <tr>
+            <td>@Bundle</td>
+            <td>`@AppBundle`</td>
+            <td>`src/AppBundle/DataFixtures/ORM/*`</td>
         </tr>
     </tobdy>
 </table>
