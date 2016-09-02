@@ -71,6 +71,17 @@ Given the following fixtures files are loaded:
   | fixtures2.yml |
 ```
 
+
+## Loading fixture parameters
+
+Fixture parameters can be loaded in the same way as loading fixtures. Any available step which loads fixtures, can also load parameters.
+You have to load your parameters before the dependend fixtures:
+
+```gherkin
+Given the fixtures file "parameters.yml" is loaded
+And the fixtures file "dummy.yml" is loaded
+```
+
 ## Steps
 
 For each context, you have the following steps available:
