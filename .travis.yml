@@ -7,16 +7,13 @@ cache:
     - $HOME/.composer/cache
 
 php:
-    - 5.4
-    - 5.5
-    - 5.6
+    - 7.1
+    - 7.2
     - nightly
-    - hhvm
 
 matrix:
     allow_failures:
         - php: nightly
-        - php: hhvm
     fast_finish: true
 
 services:
@@ -27,7 +24,7 @@ before_install:
 
 install:
     - composer self-update
-    - composer install
+    - composer install --ignore-platform-reqs
     - rm -rf tests/Features/Functional/cache/*
 
 before_script:

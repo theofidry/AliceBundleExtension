@@ -28,7 +28,7 @@ class AnotherDummy
     /**
      * @var string
      *
-     * @MongoDB\String()
+     * @MongoDB\Field(type="string")
      */
     public $name;
 }

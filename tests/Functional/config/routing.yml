@@ -1,4 +1,4 @@
 api_root:
-    pattern: /test
+    path: /test
     defaults:
         _controller: TestBundle:Root:test

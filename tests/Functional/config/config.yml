@@ -1,7 +1,7 @@
 framework:
     secret: test
     router:
-        resource: %kernel.root_dir%/config/routing.yml
+        resource: "%kernel.root_dir%/config/routing.yml"
     session: ~
     test: ~
 
@@ -14,7 +14,7 @@ doctrine:
                 auto_mapping: true
     dbal:
         driver: pdo_sqlite
-        path: %kernel.cache_dir%/db.sqlite
+        path: "%kernel.cache_dir%/db.sqlite"
         charset: UTF8
 
 doctrine_mongodb:
