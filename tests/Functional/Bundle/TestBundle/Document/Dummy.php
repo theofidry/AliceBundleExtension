@@ -28,7 +28,7 @@ class Dummy
     /**
      * @var string
      *
-     * @MongoDB\String()
+     * @MongoDB\Field(type="string")
      */
     public $name;
 }
