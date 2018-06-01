@@ -13,7 +13,7 @@ default:
             contexts:
                 - ODMFeatureContext
                 - Fidry\AliceBundleExtension\Context\Doctrine\AliceODMContext:
-                    basePath: %paths.base%/tests/Features/fixtures/ODM
+                    basePath: "%paths.base%/tests/Features/fixtures/ODM"
 
     extensions:
         Behat\Symfony2Extension:
