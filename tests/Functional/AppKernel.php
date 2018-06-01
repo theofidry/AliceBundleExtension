@@ -15,6 +15,7 @@ use Fidry\AliceBundleExtension\Tests\Functional\Bundle\TestBundle\TestBundle;
 use Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle;
 use Fidry\PsyshBundle\PsyshBundle;
 use Hautelook\AliceBundle\HautelookAliceBundle;
+use Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -31,6 +32,7 @@ class AppKernel extends Kernel
             new PsyshBundle(),
             new DoctrineMongoDBBundle(),
             new FidryAliceDataFixturesBundle(),
+            new NelmioAliceBundle(),
         ];
     }
 
