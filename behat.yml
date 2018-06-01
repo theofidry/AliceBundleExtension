@@ -7,7 +7,7 @@ default:
             contexts:
                 - ORMFeatureContext
                 - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext:
-                    basePath: %paths.base%/tests/Features/fixtures/ORM
+                    basePath: "%paths.base%/tests/Features/fixtures/ORM"
         odm_context:
             paths: [ "%paths.base%/tests/Features/ODM" ]
             contexts:

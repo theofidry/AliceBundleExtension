@@ -29,7 +29,7 @@ default:
 
                 # or if you want to set the base path only for this context:
                 - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext:
-                    basePath: %paths.base%/tests/Features/fixtures/ORM (default value)
+                    basePath: "%paths.base%/tests/Features/fixtures/ORM" (default value)
     # ...
     extensions:
         Fidry\AliceBundleExtension\Extension:
