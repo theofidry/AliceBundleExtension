@@ -14,7 +14,7 @@ A [Behat extension](http://behat.org) to load [HautelookAliceBundle](https://git
 You can use [Composer](https://getcomposer.org/) to install the bundle to your project:
 
 ```bash
-composer require theofidry/alice-bundle-extension
+composer require --dev theofidry/alice-bundle-extension
 ```
 
 Then, in your behat config file `behat.yml`, register the extension and declare the context:
