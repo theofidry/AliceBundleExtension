@@ -11,8 +11,8 @@
 
 namespace Fidry\AliceBundleExtension\Context\Doctrine;
 
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\SchemaManager;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Context to load fixtures files with Alice loader.
@@ -22,34 +22,14 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class AliceODMContext extends AbstractAliceContext
 {
     /**
-     * @var SchemaManager
-     */
-    private $schemaManager;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->init(
-            $kernel,
-            $kernel->getContainer()->get('hautelook_alice.doctrine.mongodb.fixtures_finder'),
-            $kernel->getContainer()->get('hautelook_alice.fixtures.loader'),
-            $this->resolvePersister($kernel->getContainer()->get('doctrine_mongodb.odm.default_document_manager'))
-        );
-
-        $this->schemaManager = $kernel->getContainer()->get('doctrine_mongodb.odm.default_document_manager')->getSchemaManager();
-
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function createSchema()
     {
-        $this->schemaManager->createCollections();
-        $this->schemaManager->ensureIndexes();
+        $schemaManager = $this->getSchemaManager();
+
+        $schemaManager->createCollections();
+        $schemaManager->ensureIndexes();
     }
 
     /**
@@ -57,8 +37,10 @@ class AliceODMContext extends AbstractAliceContext
      */
     public function dropSchema()
     {
-        $this->schemaManager->deleteIndexes();
-        $this->schemaManager->dropCollections();
+        $schemaManager = $this->getSchemaManager();
+
+        $schemaManager->deleteIndexes();
+        $schemaManager->dropCollections();
     }
 
     /**
@@ -68,5 +50,37 @@ class AliceODMContext extends AbstractAliceContext
     {
         $this->dropSchema();
         $this->createSchema();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getPersister()
+    {
+        return $this->resolvePersister($this->getDocumentManager());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getFixturesFinder()
+    {
+        return $this->kernel->getContainer()->get('hautelook_alice.doctrine.mongodb.fixtures_finder');
+    }
+
+    /**
+     * @return SchemaManager
+     */
+    private function getSchemaManager()
+    {
+        return $this->getDocumentManager()->getSchemaManager();
+    }
+
+    /**
+     * @return DocumentManager
+     */
+    private function getDocumentManager()
+    {
+        return $this->kernel->getContainer()->get('doctrine_mongodb.odm.default_document_manager');
     }
 }

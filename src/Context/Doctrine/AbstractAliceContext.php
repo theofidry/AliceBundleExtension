@@ -35,29 +35,9 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     protected $basePath;
 
     /**
-     * @var string[]
-     */
-    protected $classes;
-
-    /**
-     * @var FixturesFinderInterface
-     */
-    protected $fixturesFinder;
-
-    /**
      * @var KernelInterface
      */
     protected $kernel;
-
-    /**
-     * @var LoaderInterface
-     */
-    protected $loader;
-
-    /**
-     * @var PersisterInterface
-     */
-    protected $persister;
 
     /**
      * @param string|null $basePath
@@ -68,35 +48,12 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     }
 
     /**
-     * @param KernelInterface                  $kernel
-     * @param FixturesFinderInterface          $fixturesFinder
-     * @param LoaderInterface                  $loader
-     * @param PersisterInterface|ObjectManager $persister
-     * @param string                           $basePath
-     */
-    final public function init(
-        KernelInterface $kernel,
-        FixturesFinderInterface $fixturesFinder,
-        LoaderInterface $loader,
-        PersisterInterface $persister,
-        $basePath = null
-    ) {
-        $this->kernel = $kernel;
-        $this->fixturesFinder = $fixturesFinder;
-        $this->loader = $loader;
-        $this->persister = $persister;
-
-        if (null !== $basePath) {
-            $this->basePath = $basePath;
-        }
-    }
-
-    /**
      * {@inheritdoc}
-     *
-     * @return $this
      */
-    abstract public function setKernel(KernelInterface $kernel);
+    public function setKernel(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
 
     /**
      * {@inheritdoc}
@@ -167,7 +124,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     private function loadFixtures($fixturesFiles, $persister = null)
     {
         if (null === $persister) {
-            $persister = $this->persister;
+            $persister = $this->getPersister();
         }
 
         if (true === is_string($persister)) {
@@ -199,23 +156,25 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
             $fixturesFiles[$key] = sprintf('%s/%s', $this->basePath, $fixturesFile);
         }
 
+        $fixturesFinder = $this->getFixturesFinder();
+
         if (false === empty($fixtureBundles)) {
             $fixturesFiles = array_merge(
                 $fixturesFiles,
-                $this->fixturesFinder->getFixtures($this->kernel, $fixtureBundles, $this->kernel->getEnvironment())
+                $fixturesFinder->getFixtures($this->kernel, $fixtureBundles, $this->kernel->getEnvironment())
             );
         }
 
         if (false === empty($fixtureDirectories)) {
             $fixturesFiles = array_merge(
                 $fixturesFiles,
-                $this->fixturesFinder->getFixturesFromDirectory($fixtureDirectories)
+                $fixturesFinder->getFixturesFromDirectory($fixtureDirectories)
             );
         }
 
-        $this->loader->load(
+        $this->getLoader()->load(
             $persister,
-            $this->fixturesFinder->resolveFixtures($this->kernel, $fixturesFiles)
+            $fixturesFinder->resolveFixtures($this->kernel, $fixturesFiles)
         );
     }
 
@@ -229,7 +188,7 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
     final protected function resolvePersister($persister)
     {
         if (null === $persister) {
-            return $this->persister;
+            return $this->getPersister();
         }
 
         switch (true) {
@@ -245,4 +204,22 @@ abstract class AbstractAliceContext implements KernelAwareContext, AliceContextI
                 ));
         }
     }
+
+    /**
+     * @return LoaderInterface
+     */
+    protected function getLoader()
+    {
+        return $this->kernel->getContainer()->get('hautelook_alice.fixtures.loader');
+    }
+
+    /**
+     * @return PersisterInterface
+     */
+    abstract protected function getPersister();
+
+    /**
+     * @return FixturesFinderInterface
+     */
+    abstract protected function getFixturesFinder();
 }
